@@ -1,0 +1,115 @@
+package cibertec;
+
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
+public class ConfigDescuento extends JDialog {
+
+	private final JPanel contentPanel = new JPanel();
+	private JTextField txtUnidad1;
+	private JLabel lblPorcentaje1;
+	private JLabel lblUnidad2;
+	private JTextField txtUnidad2;
+	private JLabel lblPorcentaje2;
+	private JLabel lblUnidad3;
+	private JTextField txtUnidad3;
+	private JLabel lblPorcentaje3;
+	private JLabel lblUnidad4;
+	private JTextField txtUnidad4;
+	private JLabel lblPorcentaje3_1;
+	private JButton btnAceptar;
+	private JButton btnCancelar;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		try {
+			ConfigDescuento dialog = new ConfigDescuento();
+			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+			dialog.setVisible(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * Create the dialog.
+	 */
+	public ConfigDescuento() {
+		setTitle("Configurar porcentajes de descuento");
+		setBounds(100, 100, 450, 185);
+		getContentPane().setLayout(new BorderLayout());
+		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		getContentPane().add(contentPanel, BorderLayout.CENTER);
+		contentPanel.setLayout(null);
+		{
+			JLabel lblUnidad1 = new JLabel("1 a 5 unidades");
+			lblUnidad1.setBounds(10, 11, 99, 22);
+			contentPanel.add(lblUnidad1);
+		}
+		
+		txtUnidad1 = new JTextField();
+		txtUnidad1.setBounds(134, 12, 99, 20);
+		contentPanel.add(txtUnidad1);
+		txtUnidad1.setColumns(10);
+		
+		lblPorcentaje1 = new JLabel("%");
+		lblPorcentaje1.setBounds(243, 11, 22, 22);
+		contentPanel.add(lblPorcentaje1);
+		
+		lblUnidad2 = new JLabel("6 a 10 unidades");
+		lblUnidad2.setBounds(10, 44, 99, 22);
+		contentPanel.add(lblUnidad2);
+		
+		txtUnidad2 = new JTextField();
+		txtUnidad2.setBounds(134, 45, 99, 20);
+		contentPanel.add(txtUnidad2);
+		txtUnidad2.setColumns(10);
+		
+		lblPorcentaje2 = new JLabel("%");
+		lblPorcentaje2.setBounds(243, 44, 22, 22);
+		contentPanel.add(lblPorcentaje2);
+		
+		lblUnidad3 = new JLabel("11 a 15 unidades");
+		lblUnidad3.setBounds(10, 77, 99, 22);
+		contentPanel.add(lblUnidad3);
+		
+		txtUnidad3 = new JTextField();
+		txtUnidad3.setColumns(10);
+		txtUnidad3.setBounds(134, 78, 99, 20);
+		contentPanel.add(txtUnidad3);
+		
+		lblPorcentaje3 = new JLabel("%");
+		lblPorcentaje3.setBounds(243, 77, 22, 22);
+		contentPanel.add(lblPorcentaje3);
+		
+		lblUnidad4 = new JLabel("M\u00E1s de 15 unidades");
+		lblUnidad4.setBounds(10, 110, 117, 22);
+		contentPanel.add(lblUnidad4);
+		
+		txtUnidad4 = new JTextField();
+		txtUnidad4.setColumns(10);
+		txtUnidad4.setBounds(134, 111, 99, 20);
+		contentPanel.add(txtUnidad4);
+		
+		lblPorcentaje3_1 = new JLabel("%");
+		lblPorcentaje3_1.setBounds(243, 110, 22, 22);
+		contentPanel.add(lblPorcentaje3_1);
+		
+		btnAceptar = new JButton("Aceptar");
+		btnAceptar.setBounds(335, 11, 89, 22);
+		contentPanel.add(btnAceptar);
+		
+		btnCancelar = new JButton("Cancelar");
+		btnCancelar.setBounds(335, 44, 89, 22);
+		contentPanel.add(btnCancelar);
+	}
+}

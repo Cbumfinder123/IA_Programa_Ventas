@@ -1,0 +1,308 @@
+package cibertec;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.UIManager;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.JSeparator;
+
+public class Tienda extends JFrame implements ActionListener {
+
+	private static final long serialVersionUID = 1L;
+	private JPanel contentPane;
+	
+	//variables globales
+		// Datos mínimos del primer producto
+		public static String modelo0 = "Cinza Plus";
+		public static double precio0 = 92.56;
+		public static double ancho0 = 62.0;
+		public static double largo0 = 62.0;
+		public static double espesor0 = 8;
+		public static int contenido0 = 6;
+		// Datos mínimos del segundo producto
+		public static String modelo1 = "Luxury";
+		public static double precio1 = 42.77;
+		public static double ancho1 = 60;
+		public static double largo1 = 60;
+		public static double espesor1 = 8.5;
+		public static int contenido1 = 4;
+		// Datos mínimos del tercer producto
+		public static String modelo2 = "Austria";
+		public static double precio2 = 52.45;
+		public static double ancho2 = 45;
+		public static double largo2 = 45;
+		public static double espesor2 = 6.5;
+		public static int contenido2 = 12;
+		// Datos mínimos del cuarto producto
+		public static String modelo3 = "Yungay Mix";
+		public static double precio3 = 55.89;
+		public static double ancho3 = 80;
+		public static double largo3 = 120;
+		public static double espesor3 = 6.8;
+		public static int contenido3 = 9;
+		// Datos mínimos del quinto producto
+		public static String modelo4 = "Thalía";
+		public static double precio4 = 45;
+		public static double ancho4 = 45;
+		public static double largo4 = 11.8;
+		public static double espesor4 = 7.2;
+		public static int contenido4 = 10;
+		// Porcentajes de descuento
+		public static double porcentaje1 = 7.5;
+		public static double porcentaje2 = 10.0;
+		public static double porcentaje3 = 12.5;
+		public static double porcentaje4 = 15.0;
+		// Obsequio
+		public static String tipoObsequio = "Lapicero";
+		public static int obsequioCantidad1 = 2;
+		public static int obsequioCantidad2 = 3;
+		public static int obsequioCantidad3 = 4;
+		// Cantidad óptima de unidades vendidas por día
+		public static int cantidadOptima = 10;
+		// Cuota diaria
+		public static double cuotaDiaria = 30000;
+
+		
+		
+		
+		//VARIABLES PUBLIC STATICS GLOBALES NUEVAS
+		//importe acumulado de ventas por modelo
+		public static double importeAcumulado0, importeAcumulado1, importeAcumulado2,
+		importeAcumulado3, importeAcumulado4, importeAcumuladoTotal;
+		//porcentaje de cuota diria por modelo
+		public static double porcentajeCuota0, porcentajeCuota1, porcentajeCuota2,
+		porcentajeCuota3, porcentajeCuota4, porcentajeCuotaTotal;
+		//contador de cantidad acumulada de ventas por modelo
+		public static int contadorVenta0, contadorVenta1,contadorVenta2, contadorVenta3,
+		contadorVenta4, contadorVentaTotal;
+		//cantidad acumulada de unidades vendidas por modelo
+		public static int cantUniVendidas0, cantUniVendidas1, cantUniVendidas2,
+		cantUniVendidas3, cantUniVendidas4;
+		
+		
+		
+		
+		
+		
+		// fin de variable globales
+	
+	
+	
+	private JMenuBar menuBar;
+	private JMenu mnNewMenu;
+	private JMenu mnNewMenu_1;
+	private JMenu mnNewMenu_2;
+	private JMenu mnNewMenu_3;
+	private JMenu mnNewMenu_4;
+	private JMenuItem mntmNewMenuItem;
+	private JMenuItem mntmNewMenuItem_1;
+	private JMenuItem mntmNewMenuItem_2;
+	private JSeparator separator;
+	private JMenuItem mntmNewMenuItem_3;
+	private JSeparator separator_1;
+	private JMenuItem mntmNewMenuItem_4;
+	private JMenuItem mntmNewMenuItem_5;
+	private JSeparator separator_2;
+	private JMenuItem mntmNewMenuItem_6;
+	private JMenuItem mntmNewMenuItem_7;
+	private JMenuItem mntmNewMenuItem_8;
+	private JMenuItem mntmNewMenuItem_9;
+	private JSeparator separator_3;
+	private JSeparator separator_4;
+	private JSeparator separator_5;
+	private JMenuItem mntmNewMenuItem_10;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		}
+		catch (Throwable e) {
+			e.printStackTrace();
+		}
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Tienda frame = new Tienda();
+					frame.setVisible(true);
+				}
+				catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Tienda() {
+		setTitle("Tienda 1.0");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 762, 465);
+		
+		menuBar = new JMenuBar();
+		setJMenuBar(menuBar);
+		
+		mnNewMenu = new JMenu("Archivo");
+		menuBar.add(mnNewMenu);
+		
+		mntmNewMenuItem = new JMenuItem("Salir");
+		mntmNewMenuItem.addActionListener(this);
+		mnNewMenu.add(mntmNewMenuItem);
+		
+		mnNewMenu_1 = new JMenu("Mantenimiento");
+		menuBar.add(mnNewMenu_1);
+		
+		mntmNewMenuItem_1 = new JMenuItem("Consultar cer\u00E1mico");
+		mntmNewMenuItem_1.addActionListener(this);
+		mnNewMenu_1.add(mntmNewMenuItem_1);
+		
+		mntmNewMenuItem_2 = new JMenuItem("Modifiar cer\u00E1mico");
+		mntmNewMenuItem_2.addActionListener(this);
+		
+		separator = new JSeparator();
+		mnNewMenu_1.add(separator);
+		mnNewMenu_1.add(mntmNewMenuItem_2);
+		
+		separator_1 = new JSeparator();
+		mnNewMenu_1.add(separator_1);
+		
+		mntmNewMenuItem_3 = new JMenuItem("Listar cer\u00E1micos");
+		mntmNewMenuItem_3.addActionListener(this);
+		mnNewMenu_1.add(mntmNewMenuItem_3);
+		
+		mnNewMenu_2 = new JMenu("Ventas");
+		menuBar.add(mnNewMenu_2);
+		
+		mntmNewMenuItem_4 = new JMenuItem("Vender");
+		mntmNewMenuItem_4.addActionListener(this);
+		mnNewMenu_2.add(mntmNewMenuItem_4);
+		
+		separator_2 = new JSeparator();
+		mnNewMenu_2.add(separator_2);
+		
+		mntmNewMenuItem_5 = new JMenuItem("Generar reportes");
+		mntmNewMenuItem_5.addActionListener(this);
+		mnNewMenu_2.add(mntmNewMenuItem_5);
+		
+		mnNewMenu_3 = new JMenu("Configuraci\u00F3n");
+		menuBar.add(mnNewMenu_3);
+		
+		mntmNewMenuItem_6 = new JMenuItem("Configurar descuentos");
+		mntmNewMenuItem_6.addActionListener(this);
+		mnNewMenu_3.add(mntmNewMenuItem_6);
+		
+		separator_3 = new JSeparator();
+		mnNewMenu_3.add(separator_3);
+		
+		mntmNewMenuItem_7 = new JMenuItem("Configurar obsequios");
+		mntmNewMenuItem_7.addActionListener(this);
+		mnNewMenu_3.add(mntmNewMenuItem_7);
+		
+		separator_4 = new JSeparator();
+		mnNewMenu_3.add(separator_4);
+		
+		mntmNewMenuItem_8 = new JMenuItem("Configurar cantidad \u00F3ptima");
+		mnNewMenu_3.add(mntmNewMenuItem_8);
+		
+		separator_5 = new JSeparator();
+		mnNewMenu_3.add(separator_5);
+		
+		mntmNewMenuItem_9 = new JMenuItem("Configurar cuota diaria");
+		mnNewMenu_3.add(mntmNewMenuItem_9);
+		
+		mnNewMenu_4 = new JMenu("Ayuda");
+		menuBar.add(mnNewMenu_4);
+		
+		mntmNewMenuItem_10 = new JMenuItem("Acerca de Tienda");
+		mnNewMenu_4.add(mntmNewMenuItem_10);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+	}
+
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == mntmNewMenuItem_7) {
+			actionPerformedMntmNewMenuItem_7(e);
+		}
+		if (e.getSource() == mntmNewMenuItem_6) {
+			actionPerformedMntmNewMenuItem_6(e);
+		}
+		if (e.getSource() == mntmNewMenuItem_5) {
+			actionPerformedMntmNewMenuItem_5(e);
+		}
+		if (e.getSource() == mntmNewMenuItem_4) {
+			actionPerformedMntmNewMenuItem_4(e);
+		}
+		if (e.getSource() == mntmNewMenuItem_3) {
+			actionPerformedMntmNewMenuItem_3(e);
+		}
+		if (e.getSource() == mntmNewMenuItem) {
+			actionPerformedMntmNewMenuItem(e);
+		}
+		if (e.getSource() == mntmNewMenuItem_2) {
+			actionPerformedMntmNewMenuItem_2(e);
+		}
+		if (e.getSource() == mntmNewMenuItem_1) {
+			actionPerformedMntmNewMenuItem_1(e);
+		}
+		
+	}
+	protected void actionPerformedMntmNewMenuItem_1(ActionEvent e) {
+		ConsultarCeramico consultar = new ConsultarCeramico();
+		consultar.setVisible(true);
+		consultar.setLocationRelativeTo(this);
+	}
+	protected void actionPerformedMntmNewMenuItem_2(ActionEvent e) {
+		ModificarCeramico modificar = new ModificarCeramico();
+		modificar.setVisible(true);
+		modificar.setLocationRelativeTo(this);
+	}
+	protected void actionPerformedMntmNewMenuItem(ActionEvent e) {
+		int salir = JOptionPane.showConfirmDialog(this,"¿Desea Salir de la Aplicación?",
+				"Confirmación", JOptionPane.YES_NO_OPTION);
+		if(salir==JOptionPane.YES_OPTION)
+		{
+			JOptionPane.showMessageDialog(null,"Gracias por utilizar el programa");
+			System.exit(0);
+		}
+	
+	}
+	protected void actionPerformedMntmNewMenuItem_3(ActionEvent e) {
+		ListarCeramico listar = new ListarCeramico();
+		listar.setVisible(true);
+		listar.setLocationRelativeTo(this);
+	}
+	protected void actionPerformedMntmNewMenuItem_4(ActionEvent e) {
+		VenderCeramico vender = new VenderCeramico();
+		vender.setVisible(true);
+		vender.setLocationRelativeTo(this);
+	}
+	protected void actionPerformedMntmNewMenuItem_5(ActionEvent e) {
+		GenerarReporte generar = new GenerarReporte();
+		generar.setVisible(true);
+		generar.setLocationRelativeTo(this);
+	}
+	protected void actionPerformedMntmNewMenuItem_6(ActionEvent e) {
+		ConfigDescuento descuento = new ConfigDescuento();
+		descuento.setVisible(true);
+		descuento.setLocationRelativeTo(this);
+	}
+	protected void actionPerformedMntmNewMenuItem_7(ActionEvent e) {
+		ConfigObsequio obsequio = new ConfigObsequio();
+		obsequio.setVisible(true);
+		obsequio.setLocationRelativeTo(this);
+	}
+}

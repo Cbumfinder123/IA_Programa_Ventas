@@ -1,0 +1,53 @@
+package cibertec;
+
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
+public class ConfigCuota extends JDialog {
+
+	private final JPanel contentPanel = new JPanel();
+	private JTextField textField;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		try {
+			ConfigCuota dialog = new ConfigCuota();
+			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+			dialog.setVisible(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * Create the dialog.
+	 */
+	public ConfigCuota() {
+		setBounds(100, 100, 450, 120);
+		getContentPane().setLayout(new BorderLayout());
+		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		getContentPane().add(contentPanel, BorderLayout.CENTER);
+		contentPanel.setLayout(null);
+		{
+			JLabel lblCuota = new JLabel("Cuota diaria espeada    (S./)");
+			lblCuota.setBounds(10, 4, 170, 40);
+			contentPanel.add(lblCuota);
+		}
+		{
+			textField = new JTextField();
+			textField.setColumns(10);
+			textField.setBounds(169, 12, 136, 25);
+			contentPanel.add(textField);
+		}
+	}
+
+}

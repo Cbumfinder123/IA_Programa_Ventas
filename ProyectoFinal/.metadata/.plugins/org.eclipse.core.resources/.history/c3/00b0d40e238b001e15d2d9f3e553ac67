@@ -1,0 +1,307 @@
+package cibertec;
+
+import java.awt.EventQueue;
+
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JComboBox;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import java.awt.Font;
+import javax.swing.DefaultComboBoxModel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class VenderCeramico extends JDialog implements ActionListener {
+	private JLabel lblModelo;
+	private JLabel lblPrecio;
+	private JLabel lblCantidad;
+	private JComboBox cboModelo;
+	private JTextField txtPrecio;
+	private JTextField txtCantidad;
+	private JButton btnVender;
+	private JButton btnCerrar;
+	private JScrollPane scrollPane;
+	private JTextArea txtS;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					VenderCeramico dialog = new VenderCeramico();
+					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+					dialog.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the dialog.
+	 */
+	public VenderCeramico() {
+		setTitle("Vender");
+		setBounds(100, 100, 487, 391);
+		getContentPane().setLayout(null);
+		
+		lblModelo = new JLabel("Modelo");
+		lblModelo.setBounds(10, 11, 84, 14);
+		getContentPane().add(lblModelo);
+		
+		lblPrecio = new JLabel("Precio (S/.)");
+		lblPrecio.setBounds(10, 36, 84, 14);
+		getContentPane().add(lblPrecio);
+		
+		lblCantidad = new JLabel("Cantidad");
+		lblCantidad.setBounds(10, 61, 84, 14);
+		getContentPane().add(lblCantidad);
+		
+		cboModelo = new JComboBox();
+		cboModelo.addActionListener(this);
+		cboModelo.setModel(new DefaultComboBoxModel(new String[] {"Cinza Plus", "Luxury", "Austria", "Yungay Mix", "Thal\u00EDa"}));
+		cboModelo.setBounds(104, 7, 204, 22);
+		getContentPane().add(cboModelo);
+		
+		txtPrecio = new JTextField();
+		txtPrecio.setEditable(false);
+		txtPrecio.setBounds(104, 33, 204, 20);
+		getContentPane().add(txtPrecio);
+		txtPrecio.setColumns(10);
+		
+		txtCantidad = new JTextField();
+		txtCantidad.setBounds(104, 58, 204, 20);
+		getContentPane().add(txtCantidad);
+		txtCantidad.setColumns(10);
+		
+		btnVender = new JButton("Vender");
+		btnVender.addActionListener(this);
+		btnVender.setBounds(372, 7, 89, 23);
+		getContentPane().add(btnVender);
+		
+		btnCerrar = new JButton("Cerrar");
+		btnCerrar.addActionListener(this);
+		btnCerrar.setBounds(372, 32, 89, 23);
+		getContentPane().add(btnCerrar);
+		
+		scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 99, 451, 242);
+		getContentPane().add(scrollPane);
+		
+		txtS = new JTextArea();
+		txtS.setFont(new Font("Monospaced", Font.PLAIN, 13));
+		scrollPane.setViewportView(txtS);
+
+	}
+
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnCerrar) {
+			actionPerformedBtnCerrar(e);
+		}
+		if (e.getSource() == cboModelo) {
+			actionPerformedCboModelo(e);
+		}
+		if (e.getSource() == btnVender) {
+			actionPerformedBtnVender(e);
+		}
+	}
+	
+	
+	//=================================================
+	
+		
+		
+		protected void actionPerformedCboModelo(ActionEvent e) {
+			
+			int modelo = cboModelo.getSelectedIndex();
+			
+			switch(modelo) {
+			case 0:
+				txtPrecio.setText("" + Tienda.precio0);
+				break;
+			case 1:
+				txtPrecio.setText("" + Tienda.precio1);
+				break;
+			case 2:
+				txtPrecio.setText("" + Tienda.precio2);
+				break;
+			case 3:
+				txtPrecio.setText("" + Tienda.precio3);
+				break;
+			case 4:
+				txtPrecio.setText("" + Tienda.precio4);
+				break;
+			}
+		}
+		
+		
+		// proceso del boton vender
+		//=======================================================
+		
+		//leer modelo
+		int leerModelo() {
+			int modelo = cboModelo.getSelectedIndex();
+			return modelo;
+		}
+		// leer cantidad
+		int leerCantidad() {
+			int cantidad = Integer.parseInt(txtCantidad.getText());
+			return cantidad;
+		}
+		// leer precio
+		double leerPrecio() {
+			double precio = Double.parseDouble(txtPrecio.getText());
+			return precio;
+		}
+		
+		//calcular importe compra
+		double calcularCompra(int cantidad, double precio) {
+			double impcom=0;
+			impcom = precio *cantidad;
+			return impcom;
+		}
+		
+		//calcular el descuento
+
+		double calcularDescuento(int cantidad, double impcom) {
+			double impdes = 0;
+			if(cantidad >= 1 && cantidad <= 5) {
+				impdes = (Tienda.porcentaje1 * impcom)/100;
+			}else if(cantidad >= 6 && cantidad <= 10) {
+				impdes = (Tienda.porcentaje2 * impcom)/100;
+			}else if(cantidad >= 11 && cantidad <= 15) {
+				impdes = (Tienda.porcentaje3 * impcom)/100;
+			}else if(cantidad > 15) {
+				impdes = (Tienda.porcentaje4 * impcom)/100;
+			}
+			
+			return impdes;
+		}
+		
+		// calcular importe a pagar
+		double calcularImportePagar(double impcom, double impdes) {
+			double imppag = 0;
+			imppag = impcom - impdes;
+			return imppag;
+		}
+		
+		//nombre del modelo
+		String nombreModelo(int modelo) {
+			String nommodel = "";
+			switch(modelo) {
+			case 0:
+				nommodel =  Tienda.modelo0;
+				break;
+			case 1:
+				nommodel =  Tienda.modelo1;
+				break;
+			case 2:
+				nommodel =  Tienda.modelo2;
+				break;
+			case 3:
+				nommodel =  Tienda.modelo3;
+				break;
+			case 4:
+				nommodel =  Tienda.modelo4;
+				break;
+			}
+			return nommodel;
+		}
+		
+		//calcular cantidad de obsequio 
+		int calcularObsequio(int cantidad) {
+			int obsequio = 0;
+			if(cantidad >= 1 && cantidad <= 5) {
+				obsequio = Tienda.obsequioCantidad1 * cantidad; 
+			}else if(cantidad >= 6 && cantidad <= 10) {
+				obsequio = Tienda.obsequioCantidad2 * cantidad; 
+			}else if(cantidad > 10) {
+				obsequio = Tienda.obsequioCantidad3 * cantidad; 
+			}
+			return obsequio;
+		}
+		
+		
+		//imprimir los resultados
+		void mostrarResultados(String nommodelo, double precio, int cantidad, double impcom, double impdes, double imppag, String nomobsequio, int canobsequio) {
+			txtS.setText("BOLETA DE VENTAS\n\n");
+			imprimir("Modelo              :" + nommodelo);
+			imprimir("Precio              : " + String.format("%,10.2f", precio));
+			imprimir("Cantidad adquirida  : " + cantidad);
+			imprimir("Importe de compra   : " + String.format("%,10.2f", impcom));
+			imprimir("Importe descuento   : " + String.format("%,10.2f", impdes));
+			imprimir("Importe pagar       : " + String.format("%,10.2f", imppag));
+			imprimir("Tipo de obsequio 	  : " + nomobsequio);
+			imprimir("unidades de obseqio : " + canobsequio);
+		}
+		void imprimir(String cad) {
+			txtS.append(cad + "\n");
+		}
+		
+		
+		void mostrarMensaje (int con, int cantidad, double importetotal, double cuota) {
+			con = 1;
+			while (con <= cantidad) {
+				
+				importetotal += importetotal; 
+				cuota = 25;
+				
+				if(con % 5 == 0) {
+					JOptionPane.showMessageDialog(null, "Venta Nro. " + con + "\nImporte total general acumulado: S/. "+ String.format("%,10.2f", importetotal) + "\nPorcentaje de la cuota diaria: " + cuota +"%");
+				}
+				con++;
+			}
+		}
+		
+		protected void actionPerformedBtnVender(ActionEvent e) {
+			
+			
+			String nommodelo, nomobsequio;
+			int cantidad, canobsequio, modelo, contadorto;
+			double precio, impcom, impdes = 0, imppag;
+			
+			modelo = leerModelo();
+			cantidad = leerCantidad();
+			precio = leerPrecio();
+			nommodelo = nombreModelo(modelo);
+			
+			impcom = calcularCompra(cantidad, precio);
+			impdes = calcularDescuento(cantidad, impcom);
+			imppag = calcularImportePagar(impcom, impdes);
+			nommodelo = nombreModelo(modelo);
+			canobsequio = calcularObsequio(cantidad);
+			nomobsequio = Tienda.tipoObsequio;
+			
+			mostrarMensaje(modelo, cantidad, impdes, imppag);
+			
+			mostrarResultados(nommodelo, precio, cantidad, impcom, impdes, imppag, nomobsequio, canobsequio);
+			
+			
+			
+			
+		}
+		
+		void contAcum(int modelo, double impPagar, int cant) {
+			switch(modelo) {
+			case 0:
+				Tienda.contadorVenta0 ++;
+				Tienda.importeAcumulado0  +=impPagar;
+				Tienda.porcentajeCuota0 = (Tienda.importeAcumulado0/Tienda.cuotaDiaria)*100;
+				Tienda.cantUniVendidas0 += cant;
+			break;
+			}
+		}
+		
+	protected void actionPerformedBtnCerrar(ActionEvent e) {
+		
+		dispose();
+		
+	}
+}

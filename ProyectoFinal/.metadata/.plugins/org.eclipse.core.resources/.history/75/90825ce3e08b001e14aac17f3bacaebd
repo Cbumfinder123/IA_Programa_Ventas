@@ -1,0 +1,54 @@
+package cibertec;
+
+import java.awt.EventQueue;
+
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+
+import java.awt.Font;
+import java.awt.Label;
+import javax.swing.JSeparator;
+
+public class AcercaTienda extends JDialog {
+	private JLabel lblTienda;
+	private JSeparator separator;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					AcercaTienda dialog = new AcercaTienda();
+					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+					dialog.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the dialog.
+	 */
+	public AcercaTienda() {
+		setResizable(false);
+		setTitle("Acerca de Tienda");
+		setBounds(100, 100, 450, 294);
+		getContentPane().setLayout(null);
+		
+		lblTienda = new JLabel("Tienda 1.0");
+		lblTienda.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblTienda.setBounds(10, 11, 424, 25);
+		lblTienda.setHorizontalAlignment(SwingConstants.CENTER);
+		getContentPane().add(lblTienda);
+		
+		separator = new JSeparator();
+		separator.setBounds(56, 80, 331, 2);
+		getContentPane().add(separator);
+
+	}
+}

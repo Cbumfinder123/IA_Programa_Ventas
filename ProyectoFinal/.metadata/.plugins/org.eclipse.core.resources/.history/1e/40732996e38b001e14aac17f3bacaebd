@@ -1,0 +1,122 @@
+package cibertec;
+
+import java.awt.EventQueue;
+
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+
+import java.awt.Font;
+import java.awt.Label;
+import javax.swing.JSeparator;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class AcercaTienda extends JDialog implements ActionListener {
+	private JLabel lblTienda;
+	private JSeparator separator;
+	private JLabel lblNewLabel;
+	private JLabel lblNewLabel_1;
+	private JLabel lblNewLabel_2;
+	private JLabel lblNewLabel_3;
+	private JLabel lblNewLabel_4;
+	private JLabel lblNewLabel_5;
+	private JButton btnCerrar;
+	private JLabel lblDecermico;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					AcercaTienda dialog = new AcercaTienda();
+					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+					dialog.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the dialog.
+	 */
+	public AcercaTienda() {
+		setTitle("Acerca de Tienda");
+		setBounds(100, 100, 450, 294);
+		getContentPane().setLayout(null);
+		
+		lblTienda = new JLabel("Sistema de venta");
+		lblTienda.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblTienda.setBounds(58, 11, 328, 25);
+		lblTienda.setHorizontalAlignment(SwingConstants.CENTER);
+		getContentPane().add(lblTienda);
+
+		lblDecermico = new JLabel("de Cer\u00E1mico 1.0");
+		lblDecermico.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDecermico.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblDecermico.setBounds(95, 46, 271, 32);
+		getContentPane().add(lblDecermico);
+		
+		separator = new JSeparator();
+		separator.setBounds(51, 80, 331, 2);
+		getContentPane().add(separator);
+		
+		lblNewLabel = new JLabel("Autores");
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblNewLabel.setBounds(145, 101, 185, 14);
+		lblTienda.setHorizontalAlignment(SwingConstants.CENTER);
+		getContentPane().add(lblNewLabel);
+		
+		lblNewLabel_1 = new JLabel("Rodrigo Cruz Rojas Vincent\r\n");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNewLabel_1.setBounds(145, 137, 185, 14);
+		lblTienda.setHorizontalAlignment(SwingConstants.CENTER);
+		getContentPane().add(lblNewLabel_1);
+		
+		lblNewLabel_2 = new JLabel("Christian Huarcaya Palacios");
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNewLabel_2.setBounds(145, 162, 185, 14);
+		lblTienda.setHorizontalAlignment(SwingConstants.CENTER);
+		getContentPane().add(lblNewLabel_2);
+		
+		lblNewLabel_3 = new JLabel("Junior Dominguez Montero");
+		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNewLabel_3.setBounds(145, 187, 185, 14);
+		lblTienda.setHorizontalAlignment(SwingConstants.CENTER);
+		getContentPane().add(lblNewLabel_3);
+		
+		lblNewLabel_4 = new JLabel("Jhuli Trujillo Meza");
+		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNewLabel_4.setBounds(145, 212, 185, 14);
+		lblTienda.setHorizontalAlignment(SwingConstants.CENTER);
+		getContentPane().add(lblNewLabel_4);
+		
+		lblNewLabel_5 = new JLabel("Sara Quispe Sumari");
+		lblNewLabel_5.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNewLabel_5.setBounds(145, 237, 185, 14);
+		lblTienda.setHorizontalAlignment(SwingConstants.CENTER);
+		getContentPane().add(lblNewLabel_5);
+		
+		btnCerrar = new JButton("Cerrar");
+		btnCerrar.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		btnCerrar.addActionListener(this);
+		btnCerrar.setBounds(176, 289, 89, 23);
+		lblTienda.setHorizontalAlignment(SwingConstants.CENTER);
+		getContentPane().add(btnCerrar);
+		
+
+	}
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnCerrar) {
+			actionPerformedBtnCerrar(e);
+		}
+	}
+	protected void actionPerformedBtnCerrar(ActionEvent e) {
+		dispose();
+	}
+}

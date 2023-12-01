@@ -1,0 +1,68 @@
+package cibertec;
+
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
+public class ConfigDescuento extends JDialog {
+
+	private final JPanel contentPanel = new JPanel();
+	private JTextField txtUnidad1;
+	private JLabel lblporcentaje1;
+	private JLabel lblUnidad2;
+	private JTextField textField;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		try {
+			ConfigDescuento dialog = new ConfigDescuento();
+			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+			dialog.setVisible(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * Create the dialog.
+	 */
+	public ConfigDescuento() {
+		setTitle("Configurar porcentajes de descuento");
+		setBounds(100, 100, 450, 197);
+		getContentPane().setLayout(new BorderLayout());
+		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		getContentPane().add(contentPanel, BorderLayout.CENTER);
+		contentPanel.setLayout(null);
+		{
+			JLabel lblUnidad1 = new JLabel("1 a 5 unidades");
+			lblUnidad1.setBounds(10, 11, 99, 22);
+			contentPanel.add(lblUnidad1);
+		}
+		
+		txtUnidad1 = new JTextField();
+		txtUnidad1.setBounds(100, 12, 99, 20);
+		contentPanel.add(txtUnidad1);
+		txtUnidad1.setColumns(10);
+		
+		lblporcentaje1 = new JLabel("%");
+		lblporcentaje1.setBounds(209, 11, 22, 22);
+		contentPanel.add(lblporcentaje1);
+		
+		lblUnidad2 = new JLabel("6 a 10 unidades");
+		lblUnidad2.setBounds(10, 44, 99, 22);
+		contentPanel.add(lblUnidad2);
+		
+		textField = new JTextField();
+		textField.setBounds(100, 44, 99, 20);
+		contentPanel.add(textField);
+		textField.setColumns(10);
+	}
+}

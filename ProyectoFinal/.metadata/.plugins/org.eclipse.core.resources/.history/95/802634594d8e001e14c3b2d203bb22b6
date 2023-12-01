@@ -1,0 +1,82 @@
+package cibertec;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import java.awt.Color;
+
+public class Logeo extends JFrame {
+
+	private JPanel contentPane;
+	private JLabel lblNewLabel;
+	private JLabel lblNewLabel_1;
+	private JLabel lblNewLabel_2;
+	private JTextField textField;
+	private JTextField textField_1;
+	private JButton btnNewButton;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Logeo frame = new Logeo();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Logeo() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 286, 329);
+		contentPane = new JPanel();
+		contentPane.setForeground(Color.RED);
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		lblNewLabel = new JLabel("Iniciar Sesi\u00F3n");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(22, 11, 229, 40);
+		contentPane.add(lblNewLabel);
+		
+		lblNewLabel_1 = new JLabel("Usuario :");
+		lblNewLabel_1.setBounds(22, 49, 79, 27);
+		contentPane.add(lblNewLabel_1);
+		
+		lblNewLabel_2 = new JLabel("Contrase\u00F1a:");
+		lblNewLabel_2.setBounds(22, 121, 79, 27);
+		contentPane.add(lblNewLabel_2);
+		
+		textField = new JTextField();
+		textField.setBounds(22, 86, 229, 24);
+		contentPane.add(textField);
+		textField.setColumns(10);
+		
+		textField_1 = new JTextField();
+		textField_1.setColumns(10);
+		textField_1.setBounds(22, 159, 229, 24);
+		contentPane.add(textField_1);
+		
+		btnNewButton = new JButton("Iniciar sesi\u00F3n");
+		btnNewButton.setForeground(Color.WHITE);
+		btnNewButton.setBackground(Color.BLACK);
+		btnNewButton.setBounds(22, 213, 229, 40);
+		contentPane.add(btnNewButton);
+	}
+}

@@ -1,0 +1,104 @@
+package cibertec;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import java.awt.Color;
+import javax.swing.ImageIcon;
+import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class Logeo extends JFrame implements ActionListener {
+
+	private JPanel contentPane;
+	private JLabel lblNewLabel;
+	private JLabel lblUsuario;
+	private JLabel lblContraseña;
+	private JTextField txtUsuario;
+	private JTextField jpassClave;
+	private JButton btnIniciar;
+	private JLabel lblNewLabel_3;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Logeo frame = new Logeo();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Logeo() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 483, 329);
+		contentPane = new JPanel();
+		contentPane.setBackground(Color.WHITE);
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		lblNewLabel = new JLabel("Iniciar Sesi\u00F3n");
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(22, 11, 229, 40);
+		contentPane.add(lblNewLabel);
+		
+		lblUsuario = new JLabel("Usuario :");
+		lblUsuario.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblUsuario.setBounds(22, 49, 79, 27);
+		contentPane.add(lblUsuario);
+		
+		lblContraseña = new JLabel("Contrase\u00F1a:");
+		lblContraseña.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblContraseña.setBounds(22, 121, 79, 27);
+		contentPane.add(lblContraseña);
+		
+		txtUsuario = new JTextField();
+		txtUsuario.setBounds(22, 86, 229, 24);
+		contentPane.add(txtUsuario);
+		txtUsuario.setColumns(10);
+		
+		jpassClave = new JTextField();
+		jpassClave.setColumns(10);
+		jpassClave.setBounds(22, 159, 229, 24);
+		contentPane.add(jpassClave);
+		
+		btnIniciar = new JButton("Iniciar sesi\u00F3n");
+		btnIniciar.addActionListener(this);
+		btnIniciar.setForeground(Color.WHITE);
+		btnIniciar.setBackground(Color.BLACK);
+		btnIniciar.setBounds(22, 213, 229, 40);
+		contentPane.add(btnIniciar);
+		
+		lblNewLabel_3 = new JLabel("");
+		lblNewLabel_3.setIcon(new ImageIcon("C:\\Users\\User\\Downloads\\trabajo\\iconos\\si (1).png"));
+		lblNewLabel_3.setBounds(262, 33, 205, 220);
+		contentPane.add(lblNewLabel_3);
+	}
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnIniciar) {
+			actionPerformedBtnIniciar(e);
+		}
+	}
+	protected void actionPerformedBtnIniciar(ActionEvent e) {
+		char[] clave = jpassCla 
+	}
+}
